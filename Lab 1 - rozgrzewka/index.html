@@ -2,19 +2,79 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab 1</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Lab 1</title>
 </head>
 
 <body>
-  <input type="text" id="liczba1" />
-  <button id="przelicz">Przelicz</button>
-  <div id="wyniki"></div>
-  <script src="main.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    // console.log('test')
-  </script>
+
+<div class="inputs">
+    <input type="number" id="value1" class="value"/>
+    <input type="number" id="value2" class="value"/>
+    <input type="number" id="value3" class="value"/>
+    <input type="number" id="value4" class="value"/>
+</div>
+
+<button id="addInput">Add Input</button>
+<button id="calculate">Calculate</button>
+<div id="wyniki">
+    <div>Suma: <span id="suma"></span></div>
+    <div>Avg: <span id="avg"></span></div>
+    <div>Min: <span id="min"></span></div>
+    <div>Max: <span id="max"></span></div>
+
+</div>
+
+
+<script src="main.js" type="text/javascript"></script>
+<script type="text/javascript">
+    const calculateBtn = document.querySelector('#calculate');
+    const addInputBtn = document.querySelector('#addInput');
+    const sumaElement = document.querySelector('#suma');
+    const avgElement = document.querySelector('#avg');
+    const minElement = document.querySelector('#min');
+    const maxElement = document.querySelector('#max');
+
+    calculateBtn.addEventListener('click', () => {
+        const values = Array.from(document.querySelectorAll('.inputs input')).map(input => parseFloat(input.value) || 0);
+
+        const suma = values.reduce((a, b) => a + b, 0);
+        const avg = suma / values.length;
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+
+        sumaElement.textContent = suma;
+        avgElement.textContent = avg.toFixed(2);
+        minElement.textContent = min;
+        maxElement.textContent = max;
+    })
+
+    addInputBtn.addEventListener('click', () => {
+    const inputs = document.querySelectorAll('.inputs input');
+    const lastInput = inputs[inputs.length - 1];
+    const lastInputId = lastInput.id;
+    const lastInputNumber = +lastInputId.replace('value', '');
+    
+    const newInput = document.createElement('input');
+    newInput.type = 'number';
+    newInput.id = `value${lastInputNumber + 1}`;
+    newInput.className = 'value'; // Add the class 'value' to match the other inputs
+    
+    const newButton = document.createElement('button');
+    newButton.textContent = 'deleteInput';
+    newButton.className = 'deleteInput';
+    newButton.addEventListener('click', () => {
+        newInput.remove();
+        newButton.remove();
+    });
+    
+    document.querySelector('.inputs').appendChild(newInput);
+    document.querySelector('.inputs').appendChild(newButton);
+});
+
+</script>
+
 </body>
 
 </html>
