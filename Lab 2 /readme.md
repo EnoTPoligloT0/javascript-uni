@@ -13,7 +13,7 @@
 - Dostępne są dwa sposoby animacji: przewijanie lewo/prawo oraz przenikanie. Sposób konfiguracji dowolny.
 - Jeżeli slajd jest grafiką lub video, można go kliknąć i powiększyć (tzw. lightbox). Kliknęcie w grafikę zatrzymuje slider.
 
-
+30ms
 ### Przykłady:
 > https://splidejs.com/  
 > https://smartslider3.com/ken-burns/  
