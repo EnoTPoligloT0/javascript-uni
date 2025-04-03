@@ -33,8 +33,6 @@ function showImage(index) {
     sliderItems.appendChild(img)
 }
 
-
-
 const clearSlider = () => {
     while (sliderItems.firstChild) {
         sliderItems.removeChild(sliderItems.firstChild);
@@ -70,40 +68,3 @@ page4.addEventListener('click', () => {
 page5.addEventListener('click', () => {
     showImage(4);
 })
-
-
-// setTimeout(
-//     () => {
-//         console.log('Ouc!')
-//         const box = document.querySelector('#slider-inner')
-//         img1.style.transform = 'translate(200px,0px)'
-//         setTimeout()
-//     }, 2_000)
-
-let positionX = 0
-const anim = setInterval(
-    () => {
-        const box = document.querySelector('#slider-inner')
-        img1.style.transform = `translate(${positionX}px,0px)`
-        positionX++
-    }, 16)
-// przerywanie setInterval
-setTimeout(() => {
-    clearInterval(anim)
-}, 6_000)
-
-// dla stricte animacji zamiast setInterval stosujemy requestAnimationFrame
-requestAnimationFrame(
-    () => {
-        const box = document.querySelector('#slider-inner')
-        box.style.transform = `translate(${positionX}px,0px)`
-        positionX++
-        requestAnimationFrame(anim)
-    })
-
-function animateSlider() {
-    img1.style.transform = `translate(${positionX}px,0px)`
-    positionX++;
-}
-
-requestAnimationFrame(animateSlider)
