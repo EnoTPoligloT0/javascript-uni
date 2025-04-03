@@ -49,22 +49,55 @@ prevBtn.addEventListener('click', () => {
     showImage(currentIndex);
 })
 
-page1.addEventListener('click', () => {
-    showImage(0);
-})
+// page1.addEventListener('click', () => {
+//     showImage(0);
+// })
 
-page2.addEventListener('click', () => {
-    showImage(1);
-})
+// page2.addEventListener('click', () => {
+//     showImage(1);
+// })
 
-page3.addEventListener('click', () => {
-    showImage(2);
-})
+// page3.addEventListener('click', () => {
+//     showImage(2);
+// })
 
-page4.addEventListener('click', () => {
-    showImage(3);
-})
+// page4.addEventListener('click', () => {
+//     showImage(3);
+// })
 
-page5.addEventListener('click', () => {
-    showImage(4);
-})
+// page5.addEventListener('click', () => {
+//     showImage(4);
+// })
+const pages = [page1, page2, page3, page4, page5];
+
+pages.forEach((page, index) => {
+    page.addEventListener('click', () => {
+        showImage(index);
+    });
+});
+
+setTimeout(
+    () => {
+        console.log('Ouc!')
+        const box = document.querySelector('#slider-inner')
+        img1.style.transform = 'translate(200px,0px)'
+        setTimeout()
+    }, 2_000)
+
+let positionX = 0;
+const box = document.querySelector('#slider-inner'); // Ensure this is the correct element
+
+function animateSlider() {
+    box.style.transform = `translate(${positionX}px, 0px)`;
+    positionX++;
+
+    // Reset positionX if it exceeds a certain limit (optional)
+    if (positionX > box.clientWidth) {
+        positionX = 0; // Reset to start
+    }
+
+    requestAnimationFrame(animateSlider);
+}
+
+// Start the animation
+requestAnimationFrame(animateSlider);
