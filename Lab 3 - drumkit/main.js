@@ -56,7 +56,6 @@ addEventListener('keypress', (ev) => {
     //         break;
     // }
     const sound = sounds[key]
-    console.dir(sound.dataset.key)
     sound.currentTime = 0
     sound.play()
 
