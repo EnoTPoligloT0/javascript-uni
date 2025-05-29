@@ -24,13 +24,23 @@ function createImage(src) {
     return img;
 }
 
+function updatePageIndicators() {
+    const pages = [page1, page2, page3, page4, page5];
+    pages.forEach((page, index) => {
+        if (index === currentIndex) {
+            page.classList.add('active');
+        } else {
+            page.classList.remove('active');
+        }
+    });
+}
+
 function showImage(index) {
-    // while (sliderItems.firstChild) {
-    //     sliderItems.removeChild(sliderItems.firstChild);
-    // }
     clearSlider();
     const img = createImage(images[index])
     sliderItems.appendChild(img)
+    currentIndex = index; 
+    updatePageIndicators(); 
 }
 
 const clearSlider = () => {
@@ -49,25 +59,6 @@ prevBtn.addEventListener('click', () => {
     showImage(currentIndex);
 })
 
-// page1.addEventListener('click', () => {
-//     showImage(0);
-// })
-
-// page2.addEventListener('click', () => {
-//     showImage(1);
-// })
-
-// page3.addEventListener('click', () => {
-//     showImage(2);
-// })
-
-// page4.addEventListener('click', () => {
-//     showImage(3);
-// })
-
-// page5.addEventListener('click', () => {
-//     showImage(4);
-// })
 const pages = [page1, page2, page3, page4, page5];
 
 pages.forEach((page, index) => {
@@ -75,3 +66,5 @@ pages.forEach((page, index) => {
         showImage(index);
     });
 });
+
+showImage(0);
