@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 9 - Canvas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid black;
+        }
+        .controls {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lab 9 - Canvas</h1>
+    <div class="controls">
+        <label for="numBalls">Number of Balls (X): </label>
+        <input type="number" id="numBalls" value="10" min="1" />
+        <label for="distanceThreshold">Distance Threshold (Y): </label>
+        <input type="number" id="distanceThreshold" value="100" min="10" />
+        <button id="startBtn">Start</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <script src="index.js"></script>
+</body>
+</html>
