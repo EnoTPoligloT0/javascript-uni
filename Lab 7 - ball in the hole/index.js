@@ -31,7 +31,7 @@ function onDeviceMove(event) {
     const x = event.gamma || 0; 
     const y = event.beta || 0;  
     const sensitivity = 0.1; 
-    ballX -= x * sensitivity;
+    ballX += x * sensitivity;
     ballY += y * sensitivity; 
 
     ballX = Math.max(ballRadius, Math.min(canvas.width - ballRadius, ballX));
